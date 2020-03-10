@@ -4,12 +4,13 @@ class AddNinja extends Component{
     state = {
         name: null,
         age: null,
-        id: 12
+        id: null
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state);
+        this.props.addNinjas(this.state);
+        
     }
 
     handleChange = (e) => {
@@ -26,6 +27,8 @@ class AddNinja extends Component{
                 <input type='text' id="name" onChange={ this.handleChange}></input>
                 <label htmlFor="name"> Age</label> 
                 <input type='text' id="age" onChange={this.handleChange }></input>
+                <label htmlFor="name"> id</label> 
+                <input type='text' id="id" onChange={this.handleChange }></input>
                 <button>Submit</button>
 
                 </form>
