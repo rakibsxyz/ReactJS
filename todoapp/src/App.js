@@ -10,8 +10,8 @@ class App extends Component {
   }
   render() {
     return(
-    <div className="App">
-     <h1 className='center blue-Text'>My Todo's</h1>
+    <div className="todo-app container">
+     <h1 className='center blue-text'>My Todo's</h1>
      <Todos todos={this.state.todos} />
     </div>
   );
