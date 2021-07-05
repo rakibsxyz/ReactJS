@@ -1,0 +1,17 @@
+.App {
+  display: flex;
+  flex-direction: row;
+}
+
+.left{
+ flex: 30%;
+ text-align: center;
+ flex-direction: column;
+ 
+
+}
+
+.right{
+  flex: 70%;
+}
+

@@ -6,6 +6,7 @@ interface Props{
     deleteTask(taskNameToDelete:string): void;
 }
 
+
 const TodoTask = ({ task, deleteTask }: Props) => {
     return (
         <div className="task">
