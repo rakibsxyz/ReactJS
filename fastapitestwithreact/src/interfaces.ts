@@ -1,5 +1,5 @@
 export interface IStudents{
     name: string;
-    stuId: string;
+    stuId: number;
    
 }
