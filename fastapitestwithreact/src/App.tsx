@@ -12,10 +12,10 @@ const App = () => {
 
   const [name, setName] = useState<string>("")
   const [stuId, setstuId] = useState<number>(0)
-
-  const [studentForUpdate, setStudentForUpdate] = useState<IStudents>()
   const tempStudent: IStudents = {name:"name",stuId:0}
-  setStudentForUpdate(tempStudent)
+  // setStudentForUpdate(tempStudent)
+  const [studentForUpdate, setStudentForUpdate] = useState<IStudents>(tempStudent)
+  
 
   const onHandleChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.name === "name") {
@@ -89,7 +89,7 @@ const App = () => {
         })}
       </div>
       <div>{updateBoolean && <UpdateForm  onHandleChange={(e: ChangeEvent<HTMLInputElement>) =>{
-                onHandleChange(e);}} student={studentForUpdate}> </UpdateForm>}</div>
+                onHandleChange(e);}} student={studentForUpdate}/> }</div>
     </div>
   );
 }
