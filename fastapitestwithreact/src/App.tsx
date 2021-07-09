@@ -7,7 +7,7 @@ import UpdateForm from './Components/UpdateForm';
 
 const App = () => {
 
-  const [students, setStudents] = useState<IStudents[] | null>(null)
+  const [students, setStudents] = useState<IStudents[]>([])
   const [updateBoolean, setUpdateBoolean] = useState<boolean>(false)
 
   const [name, setName] = useState<string>("")
@@ -20,9 +20,11 @@ const App = () => {
   const onHandleChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.name === "name") {
       setName(event.target.value);
+      console.log(name)
     }
     else {
       setstuId(Number(event.target.value));
+      console.log(stuId)
     }
   }
 
@@ -68,6 +70,39 @@ const App = () => {
    
   }
 
+  const studentUpdate = (stuId: number, name:string) => {
+    console.log(stuId)
+    const tempStu: IStudents = {stuId: stuId, name:name}
+    const url = "http://127.0.0.1:8000/student/"+stuId;
+
+    axios.put<string>(url,tempStu)
+    .then((res) => {
+      console.log(res.data)
+      const tempStudents = students;
+      const index = students.findIndex(x => x.stuId ===stuId);
+      tempStudents[index].name = name
+      console.log(tempStudents[index].name)
+      setStudents(tempStudents)
+    })
+    .catch((err) =>{
+      console.log("Error khaise")
+    })
+  }
+
+  const deleteStudent = (id:number) => {
+    const url = "http://127.0.0.1:8000/student/"+id;
+    axios.delete<string>(url)
+    .then((res)=>{
+      console.log(res)
+      setStudents(students.filter((student) => {
+        return student.stuId !== id
+      }))
+    })
+    .catch((err) =>{
+      console.log("problem in deletion")
+    })
+  }
+
 
 
 
@@ -81,15 +116,14 @@ const App = () => {
       <div className="right">
         {students && students.map((student, key: number) => {
           return <div>  <h1>{student.name}</h1>
-            <button onClick={()=>{createUpdateForm(student);}}>Update</button>
-            
-            
-            <button>Delete</button>
+            <button onClick={()=>{createUpdateForm(student);}}>Update</button>  
+            <button onClick={()=>{
+              deleteStudent(student.stuId);
+            }}>Delete</button>
           </div>
         })}
       </div>
-      <div>{updateBoolean && <UpdateForm  onHandleChange={(e: ChangeEvent<HTMLInputElement>) =>{
-                onHandleChange(e);}} student={studentForUpdate}/> }</div>
+      <div>{updateBoolean && <UpdateForm student={studentForUpdate} studentUpdate={studentUpdate}/> }</div>
     </div>
   );
 }
