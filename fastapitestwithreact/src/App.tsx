@@ -50,13 +50,17 @@ const App = () => {
     var stud = { name: name, stuID: stuId }
     console.log("Ascchi ekhane")
 
-    axios({
-      method: 'post',
-      url: 'http://127.0.0.1:8000/student',
-      data: student
-    })
+    // axios({
+    //   method: 'post',
+    //   ,
+    //   data: student
+    // })
+    const url= 'http://127.0.0.1:8000/student';
+    axios.post<IStudents>(url,student)
       .then((res) => {
-        console.log("done adding")
+        setStudents(students => [...students,res.data])
+        // console.log(students)
+      
       })
       .catch((err) => {
         console.log("Something error man!")
@@ -75,14 +79,11 @@ const App = () => {
     const tempStu: IStudents = {stuId: stuId, name:name}
     const url = "http://127.0.0.1:8000/student/"+stuId;
 
-    axios.put<string>(url,tempStu)
+    axios.put<IStudents[]>(url,tempStu)
     .then((res) => {
-      console.log(res.data)
-      const tempStudents = students;
-      const index = students.findIndex(x => x.stuId ===stuId);
-      tempStudents[index].name = name
-      console.log(tempStudents[index].name)
-      setStudents(tempStudents)
+      // setStudents(students => [...students,res.data])
+      // console.log(students)
+      setStudents(res.data)
     })
     .catch((err) =>{
       console.log("Error khaise")
@@ -128,4 +129,4 @@ const App = () => {
   );
 }
 
-export default App;
+export default App; 
