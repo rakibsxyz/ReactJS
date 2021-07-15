@@ -26,3 +26,15 @@
   box-shadow: 1px 1px 5px green;
 
 }
+.gallary{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.image{
+  width: 40vh;
+  margin: 10px;
+  padding: 2px;
+}
