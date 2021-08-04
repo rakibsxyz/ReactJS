@@ -13,7 +13,7 @@ const [dark, setdark] = useState(false)
       {/* <Boxwithshadow/> */}
       {/* <Unsplash/> */}
       {/* <h1>Yo bro</h1> */}
-      <Darkmode  />
+      {/* <Darkmode  /> */}
      
     </div>
   );
