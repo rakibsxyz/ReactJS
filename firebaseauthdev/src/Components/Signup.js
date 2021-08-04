@@ -24,10 +24,12 @@ export default function Signup() {
             setError("")
             setLoading(true)
             await signup(emailRef.current.value, passwordRef.current.value)
+            // setLoading(false)
         } catch {
             setError("Failed to create user")
-            setLoading(false)
+           
         }
+        setLoading(false)
 
     }
 
@@ -35,6 +37,7 @@ export default function Signup() {
         <>
             <Card.Body>
                 <h2 className="text-center mb-4 ">Sign Up</h2>
+              
                 {error && <Alert variant="danger">{error}</Alert>}
                 <Form onSubmit={handleSubmit}>
                     <Form.Group id="email">
