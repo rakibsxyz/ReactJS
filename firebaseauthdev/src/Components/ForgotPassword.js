@@ -1,4 +1,4 @@
-import React, { useRef, useState} from 'react'
+import React, { useRef, useState } from 'react'
 import { Form, Button, Card, Alert } from 'react-bootstrap'
 import { useAuth } from '../Contexts/AuthContext'
 import { Link } from "react-router-dom"
@@ -12,7 +12,7 @@ export default function ForgotPassword() {
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false)
     const [message, setMessage] = useState("")
-    
+
 
     async function handleSubmit(e) {
         e.preventDefault()
@@ -26,7 +26,7 @@ export default function ForgotPassword() {
             // history.push("/") 
         } catch {
             setError("Failed to reset password")
-           
+
         }
         setLoading(false)
 
@@ -36,25 +36,25 @@ export default function ForgotPassword() {
         <>
             <Card.Body>
                 <h2 className="text-center mb-4 ">Password Reset</h2>
-              
+
                 {error && <Alert variant="danger">{error}</Alert>}
                 {message && <Alert variant="success">{message}</Alert>}
                 <Form onSubmit={handleSubmit}>
                     <Form.Group id="email">
                         <Form.Label>Email</Form.Label>
-                        <Form.Control type="email" 
-                        ref={emailRef} required></Form.Control>
+                        <Form.Control type="email"
+                            ref={emailRef} required></Form.Control>
                     </Form.Group>
-                    <Button disabled={loading} className="w-100" 
-                    type="submit">Reset</Button>
+                    <Button disabled={loading} className="w-100"
+                        type="submit">Reset</Button>
                 </Form>
                 <div className="w-100 text-center mt-2">
-               <Link to="/forgot-password">Log In</Link>
-            </div>
+                    <Link to="/forgot-password">Log In</Link>
+                </div>
 
             </Card.Body>
             <div className="w-100 text-center mt-2">
-               Need an account? <Link to="/signup">Sign Up</Link>
+                Need an account? <Link to="/signup">Sign Up</Link>
             </div>
         </>
     )
