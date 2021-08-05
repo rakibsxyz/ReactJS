@@ -7,11 +7,11 @@ import firebase from 'firebase'
 
 export default function Users() {
 
-    const nameRef = useRef()
-    const ageRef = useRef()
+    const nameRef = useRef<HTMLInputElement | null>(null)
+    const ageRef = useRef<HTMLInputElement | null >(null)
     const {currentUser} = useAuth()
-    const [userList, setUserList] = useState()
-    const [loading, setLoading] = useState(false)
+    // const [userList, setUserList] = useState()
+    const [loading, setLoading] = useState<boolean>(false)
     
 
 
@@ -19,8 +19,8 @@ export default function Users() {
         setLoading(true)
         const userRef = firebase.database().ref("User");
         const user = {
-            name: nameRef.current.value,
-            age: ageRef.current.value,
+            name: nameRef.current!.value,
+            age: ageRef.current!.value,
             email: currentUser.email
         }
 
@@ -30,17 +30,7 @@ export default function Users() {
     }
 
     return (
-        // <div>
-        //    {currentUser && 
-        //    <div>
-        //    <h1>Email: {currentUser.email}</h1>
-        //    <h2>uid: {currentUser.uid}</h2>
-        //    </div>
-        //    }
-        //    <div className="w-100 text-center mt-2">
-        //         <Button variant="link" onClick={addUser}>add user</Button>
-        //     </div>
-        // </div>
+       
         <>
             <Card.Body>
                 <h2 className="text-center mb-4 ">Add User</h2>
