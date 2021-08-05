@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { auth } from '../firebase'
 
+
 const AuthContext = React.createContext()
 
 export function useAuth() {
@@ -38,11 +39,30 @@ export function AuthProvider({ children }) {
         return currentUser.updatePassword(password)
     }
 
+    function users(){
+
+        if (currentUser !== null) {
+            currentUser.providerData.forEach((profile) => {
+            //   console.log("Sign-in provider: " + profile.providerId);
+              console.log("  Provider-specific UID: " + profile.uid);
+            //   console.log("  Name: " + profile.displayName);
+              console.log("  Email: " + profile.email);
+              console.log("  Photo URL: " + profile.photoURL);
+            });
+          }
+        
+        return currentUser
+    
+    }
+
+
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
             setCurrentUser(user)
             setLoading(false)
         })
+
+        
 
         return unsubscribe
     }, [])
@@ -55,7 +75,8 @@ export function AuthProvider({ children }) {
         logout,
         resetPassword,
         updateEmail,
-        updatePassword
+        updatePassword,
+        users
     }
 
     return (
