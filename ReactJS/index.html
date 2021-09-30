@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<title>Test React</title>
+    </head>
+    <body>
+        <div id="app"></div>
+
+        <script  type="text/babel">
+        class App extends React.Component {
+            state = {
+                name: "Rakib",
+                age: 30
+            }
+            handleClick = (e) => {
+                console.log(this.state);
+            }
+            onMouseOver(e){
+                console.log(e.target, e.pageX);
+            }
+            handleCopy(e){
+                console.log("Shala chor!kam kore kha");
+            }
+            handleForm = (e) => {
+                this.setState({
+                    name: e.target.value
+                });
+            }
+            handleSubmit = (e) => {
+                e.preventDefault();
+                console.log('form submitted', this.state.name);
+            }
+
+            render(){
+                return (
+                    <div className = "app-content">
+                        <h1>Hey, Bros</h1>
+                        <p>My name is : { this.state.name} and i am { this.state.age} </p>
+                    
+                    <button onClick={this.handleClick}>Yo! click me Man!</button>
+                    <button onMouseOver={this.mouseOver}>Yo! Over me Man!</button>
+                   <p onCopy={this.handleCopy}>don't Copy me man!</p>
+
+                   <form  onSubmit={this.handleSubmit}>
+                    <input type="text" onChange={this.handleForm}/>
+                    <button>Submit</button>
+                   </form>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(<App />, document.getElementById("app"));
+        </script>
+
+    </body>
+</html>
