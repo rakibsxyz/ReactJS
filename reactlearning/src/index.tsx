@@ -8,6 +8,7 @@ import Pagination from './Components/Pagination'
 import Cards from './Components/Cards';
 import UseEffect from './Components/UseEffect'
 import UseRef from './Components/UseRef';
+import UseMemo from './Components/UseMemo';
 
 
 ReactDOM.render(
@@ -16,7 +17,9 @@ ReactDOM.render(
     {/* <Cards/> */}
     {/* <Pagination/> */}
     {/* <UseEffect /> */}
-    <UseRef />
+    {/* <UseRef /> */}
+     <UseMemo />
+
   </React.StrictMode>,
   document.getElementById('root')
 );
