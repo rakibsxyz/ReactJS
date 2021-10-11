@@ -9,16 +9,20 @@ import Cards from './Components/Cards';
 import UseEffect from './Components/UseEffect'
 import UseRef from './Components/UseRef';
 import UseMemo from './Components/UseMemo';
+import HocComponent from './Components/HOC/HocComponent';
+import HooverCounter from './Components/HOC/HooverCounter';
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    {/* <App /> */}
     {/* <Cards/> */}
-    {/* <Pagination/> */}
-    {/* <UseEffect /> */}
+    {/* <Pagination/>
+    <UseEffect /> */}
     {/* <UseRef /> */}
-     <UseMemo />
+     {/* <UseMemo /> */}
+     {/* <HocComponent/> */}
+     <HooverCounter />
 
   </React.StrictMode>,
   document.getElementById('root')
