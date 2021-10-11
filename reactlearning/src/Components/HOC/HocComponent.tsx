@@ -4,10 +4,10 @@ import HooverCounter from './HooverCounter'
 
 function HocComponent() {
     return (
-        <div>
-            {/* <ClickCouner /> */}
-            <HooverCounter />
-        </div>
+        <>
+      <HooverCounter/>
+      <ClickCouner />
+      </>
     )
 }
 

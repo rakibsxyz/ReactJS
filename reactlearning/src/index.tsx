@@ -21,8 +21,8 @@ ReactDOM.render(
     <UseEffect /> */}
     {/* <UseRef /> */}
      {/* <UseMemo /> */}
-     {/* <HocComponent/> */}
-     <HooverCounter />
+     <HocComponent/>
+     {/* <HooverCounter /> */}
 
   </React.StrictMode>,
   document.getElementById('root')

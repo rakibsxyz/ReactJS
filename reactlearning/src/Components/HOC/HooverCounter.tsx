@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
+import UpdatedComponent from './WithCounter'
 
-function HooverCounter() {
-    const [count, setCount] = useState<number>(0)
+function  HooverCounter (props:any)  {
+   
     return (
         <div>
-            <h2 onMouseOver={()=> setCount(prev => prev + 1 )}>Hover me and it counts {count} times</h2>
+            <h2 onMouseOver={ props.increment }>Hover me and it counts {props.count} times Mr {props.name}</h2>
         </div>
     )
 }
 
-export default HooverCounter
+export default UpdatedComponent(HooverCounter)

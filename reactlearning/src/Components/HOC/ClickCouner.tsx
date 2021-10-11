@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
+import UpdatedComponent from './WithCounter'
 
-function ClickCouner() {
+function ClickCouner(props:any) {
 
-    const [count, setCount] = useState<number>(0)
+   
     return (
         <div>
-            <button onClick={()=> setCount(prevCount => prevCount + 1 )}>You Clicked me {count} times</button>
+            <button onClick={props.increment }>You Clicked me {props.count} times</button>
         </div>
     )
 }
 
-export default ClickCouner
+export default UpdatedComponent(ClickCouner)
