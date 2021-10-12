@@ -15,6 +15,7 @@ import Nav from './Components/Router/NavTest'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import DummyData from './Components/Router/DummyData';
 import SinglePost from './Components/Router/SinglePost';
+import UseContextComponent from './Components/Context/UseContextComponent';
 
 
 ReactDOM.render(
@@ -29,14 +30,16 @@ ReactDOM.render(
     {/* <HooverCounter /> */}
 
 
-    <Router>
+    {/* <Router>
       <Nav />
       <Switch>
         <Route path='/' exact component={DummyData} />
         <Route path='/posts/:id' exact component={SinglePost} />
         <Route path='/cards' exact component={Cards} />
       </Switch>
-    </Router>
+    </Router> */}
+
+    <UseContextComponent />
 
   </React.StrictMode>,
   document.getElementById('root')
